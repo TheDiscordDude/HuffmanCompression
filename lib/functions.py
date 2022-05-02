@@ -1,16 +1,19 @@
-def get_letter_frequency(string: str) -> tuple:
+def get_letter_frequencies(text: str) -> tuple:
     """
+    Scans the string passed in argument to get all the letters and their number of appearance in the string
+    :param text: The string that we need to examine
+    :return: 2 arrays : the first one is the characters and the second array is the frequencies of these characters
+    """
+    # We get all the different characters in the text :
+    characters = list(set(text))
 
-    :param string:
-    :return:
-    """
-    characters = list(set(string))
-    weights = []
+    # We then set the frequencies
+    frequencies = []
     for c in characters:
-        weights.append(string.count(c))
+        frequencies.append(text.count(c))
 
-    # Sorting values by weight
-    zipped = zip(weights, characters)
+    # Sorting values by frequency
+    zipped = zip(frequencies, characters)
     sorted_pairs = sorted(zipped)
 
     # Sorting values by character
@@ -23,22 +26,23 @@ def get_letter_frequency(string: str) -> tuple:
             arrays[i[0]] = [i]
     # then we sort all the arrays individually
     characters = []
-    weights = []
+    frequencies = []
     for v in arrays.items():
         sorted_pairs = sorted(v[1], key=lambda tup: tup[1])
         for pair in sorted_pairs:
             characters.append(pair[1])
-            weights.append(pair[0])
+            frequencies.append(pair[0])
 
-    return characters, weights
+    return characters, frequencies
 
 
-def write_compressed_file(file_name: str, character_codes: list, text:str) -> int:
+def write_compressed_file(file_name: str, character_codes: list, text: str) -> int:
     """
-
-    :param file_name:
-    :param character_codes:
-    :return:
+    Writes the bin file corresponding to the compressed file
+    :param text: the text we need to compress
+    :param file_name: the name of the output file
+    :param character_codes: the list of the characters with their bin code
+    :return: the length of the file in bytes.
     """
     with open(file_name, "wb") as f:
         content = ""
@@ -46,8 +50,7 @@ def write_compressed_file(file_name: str, character_codes: list, text:str) -> in
         for c in text:
             for c2 in character_codes:
                 if c == c2[0]:
-                    content+=c2[1]
-
+                    content += c2[1]
 
         byte_length = len(content) // 8 + (1 if len(content) % 8 != 0 else 0)
 
@@ -58,13 +61,13 @@ def write_compressed_file(file_name: str, character_codes: list, text:str) -> in
         return byte_length
 
 
-def write_alphabet_frequency_file(file_name: str, characters, weights) -> None:
+def write_alphabet_frequency_file(file_name: str, characters, frequencies) -> None:
     """
-
-    :param file_name:
-    :param characters:
-    :param weights:
+    Writes the alphabet file with the frequency of each character
+    :param file_name: the name of the output file
+    :param characters: the characters used in the text
+    :param frequencies: the frequencies of each character
     """
     with open(file_name, "w") as f:
-        content = str(len(characters)) + "\n" + "\n".join(f"{c} {w}" for c, w in zip(characters, weights))
+        content = str(len(characters)) + "\n" + "\n".join(f"{c} {w}" for c, w in zip(characters, frequencies))
         f.write(content)

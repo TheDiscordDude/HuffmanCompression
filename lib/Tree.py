@@ -39,10 +39,10 @@ class Tree:
 
     def depth_first_traversal(self, result=[], constructor=""):
         """
-
-        :param result:
-        :param constructor:
-        :return:
+        Goes through the tree  with the depth first algorithm
+        :param result: a parameter for recursive purposes. There is no need to precise put a value here
+        :param constructor: a parameter for recursive purposes. There is no need to precise put a value here
+        :return:a 2 dimensions array with the couple [letter, bin code] inside.
         """
         if self.left is None and self.right is None:
             return [[self.character, constructor]]
@@ -65,8 +65,8 @@ class Tree:
 
 def sort_tree(tree: Tree) -> int:
     """
-
-    :param tree:
-    :return:
+    Created to be used the "sorted" function
+    :param tree: the current tree
+    :return: the frequency of this tree
     """
     return tree.frequency

@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     with open(path, "r") as file:
         file_text = file.read()
-        characters, weights = get_letter_frequency(file_text)
+        characters, weights = get_letter_frequencies(file_text)
     original_size = os.path.getsize(path)
 
     forest = []
@@ -25,7 +25,7 @@ if __name__ == "__main__":
         forest = sorted(forest, key=sort_tree)
 
     final_tree = forest[0]
-    print(final_tree.toJSON())
+    #print(final_tree.toJSON())
     character_codes = final_tree.depth_first_traversal()
 
     alphabet_file_name = path.replace(".txt", "") + "_freq.txt"
