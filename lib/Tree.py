@@ -61,12 +61,3 @@ class Tree:
                 result.append(r)
 
         return result
-
-
-def sort_tree(tree: Tree) -> int:
-    """
-    Created to be used the "sorted" function
-    :param tree: the current tree
-    :return: the frequency of this tree
-    """
-    return tree.frequency

@@ -6,6 +6,11 @@ def get_letter_frequencies(text: str) -> tuple:
     """
     # We get all the different characters in the text :
     characters = list(set(text))
+    for i in range(len(characters)):
+        if characters[i] == "\n":
+            characters[i] = "\\n"
+
+
 
     # We then set the frequencies
     frequencies = []
