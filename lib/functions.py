@@ -6,11 +6,6 @@ def get_letter_frequencies(text: str) -> tuple:
     """
     # We get all the different characters in the text :
     characters = list(set(text))
-    for i in range(len(characters)):
-        if characters[i] == "\n":
-            characters[i] = "\\n"
-
-
 
     # We then set the frequencies
     frequencies = []
@@ -38,6 +33,9 @@ def get_letter_frequencies(text: str) -> tuple:
             characters.append(pair[1])
             frequencies.append(pair[0])
 
+    if "\n" in characters:
+        i = characters.index("\n")
+        characters[i] = "\\n"
     return characters, frequencies
 
 
@@ -54,7 +52,7 @@ def write_compressed_file(file_name: str, character_codes: list, text: str) -> i
 
         for c in text:
             for c2 in character_codes:
-                if c == c2[0]:
+                if c == c2[0] or c == "\n" and c2[0] == "\\n":
                     content += c2[1]
 
         byte_length = len(content) // 8 + (1 if len(content) % 8 != 0 else 0)
