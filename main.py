@@ -21,9 +21,10 @@ if __name__ == "__main__":
         second_tree = forest.pop(0)
         fusion_tree = first_tree + second_tree
 
+
         inserted = False
         for i in range(len(forest)):
-            if forest[i].get_frequency() == fusion_tree.get_frequency():
+            if forest[i].get_frequency() >= fusion_tree.get_frequency():
                 forest.insert(i, fusion_tree)
                 inserted = True
                 break
