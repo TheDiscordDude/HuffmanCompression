@@ -1,17 +1,20 @@
 import json
 
-
 class Tree:
-    def __init__(self, frequency: int, left=None, right=None, character=None):
+    def __init__(self, frequency: int, left=None, right=None, character: str = None):
         self.left = left
         self.right = right
         self.character = character
         self.frequency = frequency
 
-    def get_frequency(self):
+    def get_frequency(self) -> int:
+        """
+        Gets the frequency of the current tree
+        :return: The frequency
+        """
         return self.frequency
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Tree:{{" \
                f"{self.frequency}," \
                f"{self.character}," \
@@ -21,7 +24,8 @@ class Tree:
 
     def __add__(self, other):
         """
-        It creates a parent for the 2 trees. The frequency of the new tree is the addition of the frequencies of the trees.
+        It creates a parent for the 2 trees.
+        The frequency of the new tree is the addition of the frequencies of the trees
         :param other: the other tree
         :return: the parent tree of the 2 trees
         """
@@ -29,7 +33,7 @@ class Tree:
         new_tree = Tree(freq, self, other, None)
         return new_tree
 
-    def toJSON(self):
+    def to_json(self) -> str:
         """
         Transforms the current Tree into a JSON structure
         :return: a string representing te JSON object
@@ -37,13 +41,15 @@ class Tree:
         return json.dumps(self, default=lambda o: o.__dict__,
                           sort_keys=True, indent=4)
 
-    def depth_first_traversal(self, result=[], constructor=""):
+    def depth_first_traversal(self, result=None, constructor=""):
         """
         Goes through the tree  with the depth first algorithm
         :param result: a parameter for recursive purposes. There is no need to precise put a value here
         :param constructor: a parameter for recursive purposes. There is no need to precise put a value here
         :return:a 2 dimensions array with the couple [letter, bin code] inside.
         """
+        if result is None:
+            result = []
         if self.left is None and self.right is None:
             return [[self.character, constructor]]
 

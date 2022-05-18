@@ -16,7 +16,8 @@ You can find documentation on this method of compression [here](https://www.ic.t
 ### Technologies
 
 You can run this program with Python 3.8.
-No dependencies are required.
+No dependencies are required and no special features of Python3.8 is used.
+So you might be able to use older versions of Python. 
 
 ---
 ## How to use
@@ -32,6 +33,9 @@ Which file do you wish to compress ? text_file.txt
 There are 2 outputs for this program : 
 - The compressed file : `text_file_comp.bin`
 - The alphabet file used to decompress the file : `text_file_freq.txt` 
+
+The entire Huffman tree will then be presented to you in JSON  format.
+You can see what this looks like thanks to [this](https://jsonvisio.com/editor) website.
 
 You will then have the result of the entire process.
 ```

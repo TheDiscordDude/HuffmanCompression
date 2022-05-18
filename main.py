@@ -21,7 +21,6 @@ if __name__ == "__main__":
         second_tree = forest.pop(0)
         fusion_tree = first_tree + second_tree
 
-
         inserted = False
         for i in range(len(forest)):
             if forest[i].get_frequency() >= fusion_tree.get_frequency():
@@ -32,7 +31,7 @@ if __name__ == "__main__":
             forest.append(fusion_tree)
 
     final_tree = forest[0]
-    print(final_tree.toJSON())
+    print(final_tree.to_json())
     character_codes = final_tree.depth_first_traversal()
 
     alphabet_file_name = path.replace(".txt", "") + "_freq.txt"

@@ -1,3 +1,6 @@
+from typing import List
+
+
 def get_letter_frequencies(text: str) -> tuple:
     """
     Scans the string passed in argument to get all the letters and their number of appearance in the string
@@ -64,7 +67,7 @@ def write_compressed_file(file_name: str, character_codes: list, text: str) -> i
         return byte_length
 
 
-def write_alphabet_frequency_file(file_name: str, characters, frequencies) -> None:
+def write_alphabet_frequency_file(file_name: str, characters: List[str], frequencies: List[int]) -> None:
     """
     Writes the alphabet file with the frequency of each character
     :param file_name: the name of the output file
