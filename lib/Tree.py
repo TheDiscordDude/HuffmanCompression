@@ -1,5 +1,6 @@
 import json
 
+
 class Tree:
     def __init__(self, frequency: int, left=None, right=None, character: str = None):
         self.left = left

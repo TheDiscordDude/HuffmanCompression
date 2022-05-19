@@ -23,7 +23,17 @@ So you might be able to use older versions of Python.
 ## How to use
 
 This program is used in  command line.
-To use, you just need to use this command : 
+There are 2 argumenst you can pass to the programm : 
+- The name of the file you wish to compress
+- Weither or not you want to the Huffman tree to be printed `Y/N`
+
+For example: 
+```
+python3 main.py alice.txt y
+```
+Will compress the file and display the tree in Json format.
+
+You can also use this command : 
 `python3 main.py`
 
 You will then be prompted to put the name of the file you wish to compress.
@@ -34,8 +44,9 @@ There are 2 outputs for this program :
 - The compressed file : `text_file_comp.bin`
 - The alphabet file used to decompress the file : `text_file_freq.txt` 
 
-The entire Huffman tree will then be presented to you in JSON  format.
-You can see what this looks like thanks to [this](https://jsonvisio.com/editor) website.
+If you want to, the huffman tree can be displayed in json format
+`Do you wish to see the huffman tree in json format ? Y/N`
+You can see what it looks like thanks to [this website](https://jsonvisio.com/editor).
 
 You will then have the result of the entire process.
 ```
@@ -46,7 +57,6 @@ Average bit count : 4.1875
 
 ### Installation
 
-You just need to clone the project to a directory : 
+You just need to clone the project repo to a directory : 
 
 `git clone https://github.com/TheDiscordDude/HuffmanCompression/`
-

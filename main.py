@@ -1,8 +1,18 @@
 import os
 from lib import *
+from sys import argv
 
 if __name__ == "__main__":
-    path = input("Which file do you wish to compress ? ")
+
+    show_tree = None
+    if len(argv) == 3:
+        show_tree = argv[2].lower() == "y"
+
+    if len(argv) >= 2:
+        path = argv[1]
+    else:
+        path = input("Which file do you wish to compress ? ")
+
     while not os.path.exists(path):
         print("This file doesn't exist, please try again")
         path = input("Which file do you wish to compress ? ")
@@ -31,7 +41,11 @@ if __name__ == "__main__":
             forest.append(fusion_tree)
 
     final_tree = forest[0]
-    print(final_tree.to_json())
+    if show_tree is None:
+        show_tree = input("Do you wish to see the huffman tree in json format ? Y/N\n")
+        if show_tree.lower() == "y":
+            print(final_tree.to_json())
+
     character_codes = final_tree.depth_first_traversal()
 
     alphabet_file_name = path.replace(".txt", "") + "_freq.txt"
