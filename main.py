@@ -42,9 +42,11 @@ if __name__ == "__main__":
 
     final_tree = forest[0]
     if show_tree is None:
-        show_tree = input("Do you wish to see the huffman tree in json format ? Y/N\n")
-        if show_tree.lower() == "y":
-            print(final_tree.to_json())
+        in_ = input("Do you wish to see the huffman tree in json format ? Y/N\n")
+        show_tree = in_.lower() == "y"
+
+    if show_tree:
+        print(final_tree.to_json())
 
     character_codes = final_tree.depth_first_traversal()
 
