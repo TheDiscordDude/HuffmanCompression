@@ -51,6 +51,7 @@ class Tree:
         """
         if result is None:
             result = []
+            
         if self.left is None and self.right is None:
             return [[self.character, constructor]]
 

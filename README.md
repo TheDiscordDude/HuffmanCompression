@@ -23,7 +23,7 @@ So you might be able to use older versions of Python.
 ## How to use
 
 This program is used in  command line.
-There are 2 argumenst you can pass to the programm : 
+There are 2 argument you can pass to the program : 
 - The name of the file you wish to compress
 - Weither or not you want to the Huffman tree to be printed `Y/N`
 
