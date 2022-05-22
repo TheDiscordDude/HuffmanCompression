@@ -13,6 +13,8 @@
 This is a project done as an exercise for my university. This program can compress a text file using the Huffman compression algorithm. 
 You can find documentation on this method of compression [here](https://www.ic.tu-berlin.de/fileadmin/fg121/Source-Coding_WS12/selected-readings/10_04051119.pdf).
 
+You can also see the entire documentation of the code right [here](https://thediscorddude.github.io/HuffmanCompression/) generated thanks to sphinx.
+
 ### Technologies
 
 You can run this program with Python 3.8.
