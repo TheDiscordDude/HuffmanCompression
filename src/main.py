@@ -1,5 +1,5 @@
 import os
-from src.lib import *
+from lib import *
 from sys import argv
 
 if __name__ == "__main__":
