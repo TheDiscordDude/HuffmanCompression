@@ -60,6 +60,10 @@ def write_compressed_file(file_name: str, character_codes: list, text: str) -> i
                     content += c2[1]
 
         byte_length = len(content) // 8 + (1 if len(content) % 8 != 0 else 0)
+
+        while len(content) != byte_length * 8:
+            content = content + "0"
+
         byte_content = int(content, base=2).to_bytes(byte_length, "big")
         f.write(byte_content)
         return byte_length
