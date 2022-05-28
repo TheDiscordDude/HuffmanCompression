@@ -45,30 +45,31 @@ class Tree:
         return json.dumps(self, default=lambda o: o.__dict__,
                           sort_keys=True, indent=4)
 
-    def depth_first_traversal(self, result=None, constructor=""):
+    def depth_first_traversal(self):
         """
         Goes through the tree  with the depth first algorithm
-        :param result: a parameter for recursive purposes. There is no need to precise put a value here
-        :param constructor: a parameter for recursive purposes. There is no need to precise put a value here
         :return:a 2 dimensions array with the couple [letter, bin code] inside.
         """
-        if result is None:
-            result = []
-            
-        if self.left is None and self.right is None:
-            return [(self.character, constructor)]
+        def depth_first_traversal_rec(self, result=None, constructor=""):
 
-        new_result = []
-        if self.left is not None:
-            c = constructor + '0'
-            new_result += self.left.depth_first_traversal(result, c)
+            if result is None:
+                result = []
 
-        if self.right is not None:
-            c = constructor + '1'
-            new_result += self.right.depth_first_traversal(result, c)
+            if self.left is None and self.right is None:
+                return [(self.character, constructor)]
 
-        for r in new_result:
-            if r not in result:
-                result.append(r)
+            new_result = []
+            if self.left is not None:
+                c = constructor + '0'
+                new_result += depth_first_traversal_rec(self.left, result, c)
 
-        return result
+            if self.right is not None:
+                c = constructor + '1'
+                new_result += depth_first_traversal_rec(self.right, result, c)
+
+            for r in new_result:
+                if r not in result:
+                    result.append(r)
+            return result
+
+        return depth_first_traversal_rec(self)
